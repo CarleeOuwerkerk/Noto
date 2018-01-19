@@ -1,8 +1,28 @@
 <div class="row">
   <div class="col-md-5">
-    <noto-entry-list></noto-entry-list>
+    <noto-entry-list
+      (entrySelected)="selectedEntry = $event"></noto-entry-list>
   </div>
-  <div class="col-md-4">
-    <noto-entry-detail></noto-entry-detail>
+  <div class="col-md-7">
+    <noto-entry-detail
+      *ngIf="selectedEntry; else infoText"
+      [entry]="selectedEntry">
+    </noto-entry-detail>
+    <ng-template #infoText>
+      <p>Select an entry for more details.</p>
+    </ng-template>
   </div>
 </div>
+
+
+<!--<div class="row">-->
+<!--<div class="col-md-5">-->
+<!--<cms-contact-list></cms-contact-list>-->
+<!--</div>-->
+<!--<div class="col-md-7">-->
+<!--<router-outlet></router-outlet>-->
+<!--<ng-template #infoText>-->
+<!--<h5>Please select a contact.</h5>-->
+<!--</ng-template>-->
+<!--</div>-->
+<!--</div>-->

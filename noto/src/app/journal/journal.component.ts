@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Entry} from "./entry.model";
 
 @Component({
   selector: 'noto-journal',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./journal.component.css']
 })
 export class JournalComponent implements OnInit {
+
+  selectedEntry: Entry;
 
   constructor() { }
 

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'noto';
+  loadedPage = 'journal';
+
+  onNavigate(page: string){
+    this.loadedPage = page;
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Entry} from "../entry.model";
 
 @Component({
   selector: 'noto-entry-item',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntryItemComponent implements OnInit {
 
+  @Input() entry: Entry;
+  @Output() entrySelected = new EventEmitter<void>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelected() {
+    this.entrySelected.emit();
   }
 
 }

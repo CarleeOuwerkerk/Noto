@@ -3,3 +3,18 @@
 .black-background {background-color:#222222; border-color: #222222;}
 .white {color:#ffffff;}
 
+.textSize {font-size: 30px;}
+
+.panelPaddingLeft {padding-left: 8px;}
+.panelPaddingRight {padding-right: 8px;}
+
+.incFont {font-family: 'Source Code Pro', monospace;}
+
+.hover > a:hover {background-color: red;}
+
+/*.logo {*/
+  /*background: url("app/Noto.png");*/
+  /*background-size: 50px, 50px;*/
+/*}*/
+       /*!*height: 800px;*!*/
+       /*!*border-image-width: 20px}*!*/

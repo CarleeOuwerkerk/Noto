@@ -1,2 +1,10 @@
-<noto-header></noto-header>
-<noto-journal></noto-journal>
+<noto-header (pageSelected)="onNavigate($event)"></noto-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <noto-journal *ngIf="loadedPage === 'journal'"></noto-journal>
+    </div>
+  </div>
+</div>
+

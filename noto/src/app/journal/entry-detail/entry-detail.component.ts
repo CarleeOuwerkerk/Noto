@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Entry} from "../entry.model";
 
 @Component({
   selector: 'noto-entry-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry-detail.component.css']
 })
 export class EntryDetailComponent implements OnInit {
+
+  @Input() entry: Entry;
 
   constructor() { }
 
