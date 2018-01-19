@@ -43,9 +43,10 @@
     <div>
       <ul class="nav navbar-nav">
         <li><a href="#" (click)="onSelect('journal')">Journal</a></li>
+        <li><a href="#" (click)="onSelect('throwback')">Throwback</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li class="dropdown" appDropdown>
           <a href="#" class="dropdown-toggle" role="button">Account <span class="caret"></span> </a>
           <ul class="dropdown-menu">
             <li><a href="#">Settings</a></li>

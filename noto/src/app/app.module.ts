@@ -8,6 +8,7 @@ import { EntryListComponent } from './journal/entry-list/entry-list.component';
 import { EntryItemComponent } from './journal/entry-item/entry-item.component';
 import { EntryCalendarComponent } from './journal/entry-calendar/entry-calendar.component';
 import { EntryDetailComponent } from './journal/entry-detail/entry-detail.component';
+import {DropdownDirective} from "./directives/dropdown.directive";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EntryDetailComponent } from './journal/entry-detail/entry-detail.compon
     EntryListComponent,
     EntryItemComponent,
     EntryCalendarComponent,
-    EntryDetailComponent
+    EntryDetailComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule
