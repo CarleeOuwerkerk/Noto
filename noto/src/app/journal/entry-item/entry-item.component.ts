@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Entry} from "../entry.model";
+import {JournalService} from "../journal.service";
 
 @Component({
   selector: 'noto-entry-item',
@@ -9,15 +10,17 @@ import {Entry} from "../entry.model";
 export class EntryItemComponent implements OnInit {
 
   @Input() entry: Entry;
-  @Output() entrySelected = new EventEmitter<void>();
+  // @Output() entrySelected = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private journalService: JournalService) { }
 
   ngOnInit() {
   }
 
   onSelected() {
-    this.entrySelected.emit();
+    // this.entrySelected.emit();
+    this.journalService.entrySelected.emit(this.entry);
+
   }
 
 }

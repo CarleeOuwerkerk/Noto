@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'noto-header',
@@ -7,15 +7,15 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() pageSelected = new EventEmitter<string>();
+  // @Output() pageSelected = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSelect(page: string){
-    this.pageSelected.emit(page);
-  }
+  // onSelect(page: string){
+  //   this.pageSelected.emit(page);
+  // }
 
 }

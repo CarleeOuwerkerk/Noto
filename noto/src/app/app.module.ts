@@ -9,6 +9,8 @@ import { EntryItemComponent } from './journal/entry-item/entry-item.component';
 import { EntryCalendarComponent } from './journal/entry-calendar/entry-calendar.component';
 import { EntryDetailComponent } from './journal/entry-detail/entry-detail.component';
 import {DropdownDirective} from "./directives/dropdown.directive";
+import {JournalService} from "./journal/journal.service";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import {DropdownDirective} from "./directives/dropdown.directive";
     DropdownDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [JournalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
