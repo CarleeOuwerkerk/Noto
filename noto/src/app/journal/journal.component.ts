@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Entry} from "./entry.model";
+// import {Entry} from "./entry.model";
 import {JournalService} from "./journal.service";
 
 @Component({
@@ -9,17 +9,19 @@ import {JournalService} from "./journal.service";
 })
 export class JournalComponent implements OnInit {
 
-  selectedEntry: Entry;
+  // selectedEntry: Entry;
 
-  constructor(private journalService: JournalService) { }
+  constructor(
+    // private journalService: JournalService
+  ) { }
 
   ngOnInit() {
-    this.journalService.entrySelected
-      .subscribe(
-        (entry: Entry) => {
-          this.selectedEntry = entry;
-        }
-      )
+    // this.journalService.entrySelected
+    //   .subscribe(
+    //     (entry: Entry) => {
+    //       this.selectedEntry = entry;
+    //     }
+    //   )
   }
 
 }

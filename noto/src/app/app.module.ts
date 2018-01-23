@@ -11,6 +11,9 @@ import { EntryDetailComponent } from './journal/entry-detail/entry-detail.compon
 import {DropdownDirective} from "./directives/dropdown.directive";
 import {JournalService} from "./journal/journal.service";
 import {AppRoutingModule} from "./app-routing.module";
+import { JournalStartComponent } from './journal/journal-start/journal-start.component';
+import { EntryEditComponent } from './journal/entry-edit/entry-edit.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,11 +24,15 @@ import {AppRoutingModule} from "./app-routing.module";
     EntryItemComponent,
     EntryCalendarComponent,
     EntryDetailComponent,
-    DropdownDirective
+    DropdownDirective,
+    JournalStartComponent,
+    EntryEditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [JournalService],
   bootstrap: [AppComponent]

@@ -5,13 +5,7 @@
     </noto-entry-list>
   </div>
   <div class="col-md-7">
-    <noto-entry-detail
-      *ngIf="selectedEntry; else infoText"
-      [entry]="selectedEntry">
-    </noto-entry-detail>
-    <ng-template #infoText>
-      <p>Select an entry for more details.</p>
-    </ng-template>
+    <router-outlet></router-outlet>
   </div>
 </div>
 

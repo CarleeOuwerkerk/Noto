@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Entry} from "../entry.model";
+import {JournalService} from "../journal.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'noto-entry-detail',
@@ -8,11 +10,27 @@ import {Entry} from "../entry.model";
 })
 export class EntryDetailComponent implements OnInit {
 
-  @Input() entry: Entry;
+  entry: Entry;
+  // @Input() entry: Entry;
+  id: number;
 
-  constructor() { }
+  constructor(private journalService: JournalService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.entry = this.journalService.getEntry(this.id);
+        }
+      );
+  }
+
+  onEditEntry() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+  // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
 }
