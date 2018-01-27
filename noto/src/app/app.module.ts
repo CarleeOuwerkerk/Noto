@@ -15,6 +15,9 @@ import { JournalStartComponent } from './journal/journal-start/journal-start.com
 import { EntryEditComponent } from './journal/entry-edit/entry-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JournalFilterPipe} from "./journal/journal-filter.pipe";
+import { ThrowbackComponent } from './throwback/throwback.component';
+import { ThrowbackDetailComponent } from './throwback/throwback-detail/throwback-detail.component';
+import { ThrowbackStartComponent } from './throwback/throwback-start/throwback-start.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {JournalFilterPipe} from "./journal/journal-filter.pipe";
     DropdownDirective,
     JournalStartComponent,
     EntryEditComponent,
-    JournalFilterPipe
+    JournalFilterPipe,
+    ThrowbackComponent,
+    ThrowbackDetailComponent,
+    ThrowbackStartComponent
   ],
   imports: [
     BrowserModule,

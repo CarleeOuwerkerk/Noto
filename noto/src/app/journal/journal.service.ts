@@ -39,4 +39,9 @@ export class JournalService {
     this.entriesChanged.next(this.entries.slice());
   }
 
+  getRandomID() {
+    let randomEntry = this.entries[Math.floor(Math.random() * this.entries.length)];
+    return (+randomEntry.id - 1);
+  }
+
 }

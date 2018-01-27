@@ -12,6 +12,8 @@
 
 .hover > a:hover {background-color: red;}
 
+.pad-bottom {padding-bottom: 8px;}
+
 /*.logo {*/
   /*background: url("app/Noto.png");*/
   /*background-size: 50px, 50px;*/
