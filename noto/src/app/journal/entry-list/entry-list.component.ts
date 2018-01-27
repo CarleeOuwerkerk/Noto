@@ -11,9 +11,9 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class EntryListComponent implements OnInit, OnDestroy {
 
-  // @Output() entrySelected = new EventEmitter<Entry>();
   entries: Entry[];
   subscription: Subscription;
+  term: String = "";
 
   constructor(private journalService: JournalService,
               private router: Router,
@@ -30,16 +30,16 @@ export class EntryListComponent implements OnInit, OnDestroy {
     this.entries = this.journalService.getEntries();
   }
 
-  // onEntrySelected(entry: Entry){
-  //   this.entrySelected.emit(entry);
-  // }
-
   onNewEntry() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onKeyPress(value: string) {
+    this.term = value;
   }
 
 }

@@ -11,7 +11,6 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class EntryDetailComponent implements OnInit {
 
   entry: Entry;
-  // @Input() entry: Entry;
   id: number;
 
   constructor(private journalService: JournalService,

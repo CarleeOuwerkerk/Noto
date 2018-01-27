@@ -14,6 +14,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { JournalStartComponent } from './journal/journal-start/journal-start.component';
 import { EntryEditComponent } from './journal/entry-edit/entry-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {JournalFilterPipe} from "./journal/journal-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     EntryDetailComponent,
     DropdownDirective,
     JournalStartComponent,
-    EntryEditComponent
+    EntryEditComponent,
+    JournalFilterPipe
   ],
   imports: [
     BrowserModule,
