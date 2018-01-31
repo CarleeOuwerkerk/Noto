@@ -7,19 +7,30 @@ import {EntryEditComponent} from "./journal/entry-edit/entry-edit.component";
 import {ThrowbackComponent} from "./throwback/throwback.component";
 import {ThrowbackDetailComponent} from "./throwback/throwback-detail/throwback-detail.component";
 import {ThrowbackStartComponent} from "./throwback/throwback-start/throwback-start.component";
+import {StartupComponent} from "./startup/startup.component";
+import {LoginFormComponent} from "./startup/login-form/login-form.component";
+import {SignupFormComponent} from "./startup/signup-form/signup-form.component";
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/journal', pathMatch: 'full' },
-  { path: 'journal', component: JournalComponent, children: [
-    { path: '', component: JournalStartComponent },
-    { path: 'new', component: EntryEditComponent },
-    { path: ':id', component: EntryDetailComponent },
-    { path: ':id/edit', component: EntryEditComponent }
-  ]},
-  { path: 'throwback', component: ThrowbackComponent, children: [
-    { path: '', component: ThrowbackStartComponent},
-    { path: ':id', component: ThrowbackDetailComponent }
-  ] }
+  {path: '', redirectTo: '/journal', pathMatch: 'full'},
+  {
+    path: 'journal', component: JournalComponent, children: [
+    {path: '', component: JournalStartComponent},
+    {path: 'new', component: EntryEditComponent},
+    {path: ':id', component: EntryDetailComponent},
+    {path: ':id/edit', component: EntryEditComponent}]
+  },
+  {
+    path: 'throwback', component: ThrowbackComponent, children: [
+    {path: '', component: ThrowbackStartComponent},
+    {path: ':id', component: ThrowbackDetailComponent}]
+  },
+  {path: 'login', component: LoginFormComponent},
+  {path: 'signup', component: SignupFormComponent}
+  // { path: 'startup', component: StartupComponent, children: [
+  //   { path: 'login', component: LoginFormComponent },
+  //   { path: 'signup', component: SignupFormComponent }
+  // ] }
 ];
 
 @NgModule({

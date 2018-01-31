@@ -13,7 +13,11 @@ export class JournalService {
     new Entry("2",
       (new Date(Date.now())),
       "Today was really fun.",
-      "https://media1.popsugar-assets.com/files/thumbor/lvGXyybYh6-ZMmcO0-souYZRLBg/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/12/22/988/n/1922283/052079922686ef54_Draco-Malfoy-Wallpaper-draco-malfoy-25676685-1024-768.jpg")
+      "https://media1.popsugar-assets.com/files/thumbor/lvGXyybYh6-ZMmcO0-souYZRLBg/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/12/22/988/n/1922283/052079922686ef54_Draco-Malfoy-Wallpaper-draco-malfoy-25676685-1024-768.jpg"),
+    new Entry("3",
+      (new Date(Date.now())),
+      "Today was the best.",
+      "https://i1.wp.com/images4.fanpop.com/image/photos/15700000/Snape-severus-snape-15700150-640-480.jpg")
   ];
 
   getEntries() {

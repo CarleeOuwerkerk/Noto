@@ -18,6 +18,9 @@ import {JournalFilterPipe} from "./journal/journal-filter.pipe";
 import { ThrowbackComponent } from './throwback/throwback.component';
 import { ThrowbackDetailComponent } from './throwback/throwback-detail/throwback-detail.component';
 import { ThrowbackStartComponent } from './throwback/throwback-start/throwback-start.component';
+import { StartupComponent } from './startup/startup.component';
+import { LoginFormComponent } from './startup/login-form/login-form.component';
+import { SignupFormComponent } from './startup/signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ThrowbackStartComponent } from './throwback/throwback-start/throwback-s
     JournalFilterPipe,
     ThrowbackComponent,
     ThrowbackDetailComponent,
-    ThrowbackStartComponent
+    ThrowbackStartComponent,
+    StartupComponent,
+    LoginFormComponent,
+    SignupFormComponent,
   ],
   imports: [
     BrowserModule,
