@@ -4,13 +4,15 @@
   class="list-group-item clearfix">
   <!--(click)="onSelected()">-->
   <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ entry.date }}</h4>
-    <p class="list-group-item-text">{{ entry.text }}</p>
+    <h4 class="list-group-item-heading">
+      {{ entry.date }} &nbsp; &nbsp; {{ entry.text | textFilter }}
+    </h4>
+    <!--<p class="list-group-item-text">{{ entry.text }}</p>-->
   </div>
-  <span class="pull-right">
-    <img src="{{ entry.imageURL }}"
-         alt="{{ entry.date }}"
-         class="img-responsive"
-         style="max-height: 50px;">
-  </span>
+  <!--<span class="pull-right">-->
+  <!--<img src="{{ entry.imageURL }}"-->
+  <!--alt="{{ entry.date }}"-->
+  <!--class="img-responsive"-->
+  <!--style="max-height: 50px;">-->
+  <!--</span>-->
 </a>

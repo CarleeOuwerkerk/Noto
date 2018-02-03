@@ -19,26 +19,36 @@
             <img
               [src]="entry.imageURL"
               alt="{{ entry.date }}"
-              class="img-responsive"
+              class="img-responsive centre"
               style="max-height: 300px">
 
-            <hr>
+            <!--<hr>-->
 
-            <div class="centre">
-              <a
-                class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"
-              (click)="onEditEntry()">
-              </a>
-              <a
-                (click)="onDeleteEntry()"
-                class="btn btn-primary black-background white glyphicon glyphicon-trash">
-              </a>
-            </div>
+            <!--<div class="centre">-->
+              <!--<a-->
+                <!--class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"-->
+              <!--(click)="onEditEntry()">-->
+              <!--</a>-->
+              <!--<a-->
+                <!--(click)="onDeleteEntry()"-->
+                <!--class="btn btn-primary black-background white glyphicon glyphicon-trash">-->
+              <!--</a>-->
+            <!--</div>-->
 
           </div>
         </div>
       </div>
 
     </div>
+
+    <div style="padding-left: 43%">
+      <a class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"
+         (click)="onEditEntry()">
+      </a>
+      <a class="btn btn-primary black-background white glyphicon glyphicon-trash"
+         (click)="onDeleteEntry()">
+      </a>
+    </div>
+
   </div>
 </div>

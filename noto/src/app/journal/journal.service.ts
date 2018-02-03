@@ -1,8 +1,10 @@
 import {Entry} from "./entry.model";
 import {Subject} from "rxjs/Subject";
+import {EventEmitter} from "@angular/core";
 
 export class JournalService {
 
+  entriesChangedEvent = new EventEmitter()
   entriesChanged = new Subject<Entry[]>();
 
   private entries: Entry[] = [
@@ -30,22 +32,37 @@ export class JournalService {
 
   addEntry(entry: Entry) {
     this.entries.push(entry);
+    this.entries = this.entries.sort(this.sortEntries);
     this.entriesChanged.next(this.entries.slice());
   }
 
   updateEntry(index: number, newEntry: Entry) {
     this.entries[index] = newEntry;
+    this.entries = this.entries.sort(this.sortEntries);
     this.entriesChanged.next(this.entries.slice());
   }
 
   deleteEntry(index: number) {
     this.entries.splice(index, 1);
+    this.entries = this.entries.sort(this.sortEntries);
     this.entriesChanged.next(this.entries.slice());
   }
 
   getRandomID() {
     let randomEntry = this.entries[Math.floor(Math.random() * this.entries.length)];
     return (+randomEntry.id - 1);
+  }
+
+  sortEntries(entryA: Entry, entryB: Entry){
+    if (entryA.date > entryB.date){
+      return -1;
+    }
+    else if (entryA.date < entryB.date){
+      return 1;
+    }
+    else {
+      return 0;
+    }
   }
 
 }

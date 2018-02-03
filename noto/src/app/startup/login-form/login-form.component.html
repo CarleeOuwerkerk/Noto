@@ -5,50 +5,55 @@
       style="cursor: pointer;"
       src="https://static.wixstatic.com/media/f77b93_91f4ca3c9eb64620b2f20a9a9929afc1~mv2.png/v1/fit/w_925,h_569,al_c,q_80/file.png"
       class="img-responsive centre"
-      style="height: 300px">
+      style="height: 250px">
 
-    <form [formGroup]="entryForm"
-          (ngSubmit)="onSubmit()"
-          style="padding-top: 20px;">
+    <div class="col-xs-12" style="padding-left: 34.5%">
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              formControlName="username"
-              class="form-control"
-              required>
+      <form [formGroup]="entryForm"
+            (ngSubmit)="onSubmit()"
+            style="padding-top: 25px;">
+
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                formControlName="username"
+                class="form-control"
+                required>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              formControlName="password"
-              class="form-control"
-              required>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                required>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit"
-                  class="btn black-background white"
-                  [disabled]="!entryForm.valid">Log In
-          </button>
+        <div class="row">
+          <div class="col-xs-12" style="padding-left: 20%">
+            <button type="submit"
+                    class="btn black-background white"
+                    [disabled]="!entryForm.valid">Log In
+            </button>
+          </div>
         </div>
-      </div>
 
-    </form>
+      </form>
+
+    </div>
+
 
   </div>
 </div>

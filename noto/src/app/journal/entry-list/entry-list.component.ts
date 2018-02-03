@@ -12,8 +12,9 @@ import {Subscription} from "rxjs/Subscription";
 export class EntryListComponent implements OnInit, OnDestroy {
 
   entries: Entry[];
-  subscription: Subscription;
+  private subscription: Subscription;
   term: String = "";
+  // journalfilter: String = "";
 
   constructor(private journalService: JournalService,
               private router: Router,
@@ -40,6 +41,7 @@ export class EntryListComponent implements OnInit, OnDestroy {
 
   onKeyPress(value: string) {
     this.term = value;
+    // this.journalfilter = value;
   }
 
 }

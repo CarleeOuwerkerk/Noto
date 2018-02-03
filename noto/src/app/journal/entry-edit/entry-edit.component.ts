@@ -87,4 +87,7 @@ export class EntryEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
+  chooseDateTime(){
+    // ('dateTimePicker1').dateTim
+  }
 }

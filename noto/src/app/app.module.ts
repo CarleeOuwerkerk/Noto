@@ -21,6 +21,7 @@ import { ThrowbackStartComponent } from './throwback/throwback-start/throwback-s
 import { StartupComponent } from './startup/startup.component';
 import { LoginFormComponent } from './startup/login-form/login-form.component';
 import { SignupFormComponent } from './startup/signup-form/signup-form.component';
+import { TextFilterPipe } from './journal/text-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SignupFormComponent } from './startup/signup-form/signup-form.component
     StartupComponent,
     LoginFormComponent,
     SignupFormComponent,
+    TextFilterPipe,
   ],
   imports: [
     BrowserModule,

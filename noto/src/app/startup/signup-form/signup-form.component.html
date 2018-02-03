@@ -7,85 +7,89 @@
       class="img-responsive centre"
       style="height: 150px">
 
-    <form [formGroup]="entryForm"
-          (ngSubmit)="onSubmit()"
-          style="padding-top: 25px;">
+    <div class="col-xs-12" style="padding-left: 35%">
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="first">First Name</label>
-            <input
-              type="text"
-              id="first"
-              formControlName="first"
-              class="form-control">
+      <form [formGroup]="entryForm"
+            (ngSubmit)="onSubmit()"
+            style="padding-top: 25px;">
+
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="first">First Name</label>
+              <input
+                type="text"
+                id="first"
+                formControlName="first"
+                class="form-control">
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="last">Last Name</label>
-            <input
-              type="text"
-              id="last"
-              formControlName="last"
-              class="form-control">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="last">Last Name</label>
+              <input
+                type="text"
+                id="last"
+                formControlName="last"
+                class="form-control">
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              formControlName="email"
-              class="form-control">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                formControlName="email"
+                class="form-control">
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              formControlName="username"
-              class="form-control">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                formControlName="username"
+                class="form-control">
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              formControlName="password"
-              class="form-control">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control">
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit"
-                  class="btn black-background white"
-                  [disabled]="!entryForm.valid">Sign Up
-          </button>
+        <div class="row">
+          <div class="col-xs-12" style="padding-left: 19%">
+            <button type="submit"
+                    class="btn black-background white"
+                    [disabled]="!entryForm.valid">Sign Up
+            </button>
+          </div>
         </div>
-      </div>
 
-    </form>
+      </form>
+
+    </div>
 
   </div>
 </div>
