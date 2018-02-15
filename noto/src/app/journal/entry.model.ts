@@ -1,24 +1,36 @@
 import {Injectable} from "@angular/core";
+import DateTimeFormat = Intl.DateTimeFormat;
+import {stringify} from "@angular/core/src/util";
 
 @Injectable()
 export class Entry {
 
   public id: string;
-  public date: string;
+  public date: Date;
+  // public date: string;
+    // string;
+  // public date;
+  public title: string;
   public text: string;
-  public imageURL?: string;
+  public images: string[];
 
   constructor(id: string,
               date: Date,
+              title: string,
               text: string,
-              imageURL?: string)
+              images?: string[])
   // should I make images an array?
+  // Should I also add an array of document type things?
+  // or do that instead of the pictures?  just have an
+  // upload section
   {
 
     this.id = id;
-    this.date = date.toDateString();
+    this.date = date;
+      // .toDateString();
+    this.title = title;
     this.text = text;
-    this.imageURL = imageURL;
+    this.images = images;
 
   }
 

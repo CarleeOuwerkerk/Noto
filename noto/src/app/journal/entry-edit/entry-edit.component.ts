@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {JournalService} from "../journal.service";
+import {Entry} from "../entry.model";
 
 @Component({
   selector: 'noto-entry-edit',
@@ -13,6 +14,7 @@ export class EntryEditComponent implements OnInit {
   id: number;
   editMode = false;
   entryForm: FormGroup;
+  entry: Entry = null;
 
   constructor(private route: ActivatedRoute,
               private journalService: JournalService,
@@ -28,20 +30,40 @@ export class EntryEditComponent implements OnInit {
           this.initForm();
         }
       );
+
+    this.entry = this.journalService.getEntry(this.id);
   }
 
   private initForm() {
-    let entryDate = '';
+    let entryDate;
+    let entryTitle = '';
     let entryText = '';
-    let entryImageURL = '';
-    // let entryImages = new FormArray([]);
+    let images = [];
 
     if (this.editMode) {
       const entry = this.journalService.getEntry(this.id);
       entryDate = entry.date;
+      entryTitle = entry.title;
       entryText = entry.text;
-      entryImageURL = entry.imageURL;
+      images = entry.images;
 
+      // for (let image of entry.imageURL){
+      //   entryImages.push(image);
+      // }
+
+
+      // if (entry['imageURL']) {
+      //   for (let image of entry.imageURL) {
+      //     entryImages.push(
+      //       new FormGroup({
+      //         'url': new FormControl(image.imageURL)
+      //       })
+      //     );
+      //   }
+      // }
+
+      // entryImages = entry.imageURL;
+      //
       // if (entry['images']) {
       //   for (let image of entry.imageURL) {
       //     entryImages.push(
@@ -56,9 +78,9 @@ export class EntryEditComponent implements OnInit {
 
     this.entryForm = new FormGroup({
       'date': new FormControl(entryDate, Validators.required),
+      'title': new FormControl(entryTitle),
       'text': new FormControl(entryText, Validators.required),
-      'imageURL': new FormControl(entryImageURL)
-      // , 'images': entryImages
+      'images': new FormControl(images)
     });
   }
 
@@ -79,7 +101,11 @@ export class EntryEditComponent implements OnInit {
   }
 
   onDeleteEntry() {
-    this.journalService.deleteEntry(this.id);
+    if (!this.editMode)
+    {
+      return;
+    }
+    this.journalService.deleteEntry(this.entry, this.id);
     this.router.navigate(['../../'], {relativeTo: this.route});
   }
 
@@ -89,5 +115,9 @@ export class EntryEditComponent implements OnInit {
 
   chooseDateTime(){
     // ('dateTimePicker1').dateTim
+  }
+
+  addImage(url: string){
+    this.entry.images.push(url);
   }
 }

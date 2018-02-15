@@ -4,7 +4,7 @@
 
       <div class="panel-heading">
         <div class="row pad-left-right">
-          <span class="panelPaddingLeft title pull-left textSize">{{ entry.date }}</span>
+          <span class="panelPaddingLeft title pull-left textSize">{{ entry.date | date }}</span>
         </div>
 
         <div class="panelPaddingLeft row">
@@ -15,12 +15,17 @@
         <div class="row">
           <div class="col-xs-12">
 
+            <h3>{{ entry.title }}</h3>
+
             <p>{{ entry.text }}</p>
-            <img
-              [src]="entry.imageURL"
-              alt="{{ entry.date }}"
-              class="img-responsive"
-              style="max-height: 300px">
+            <div *ngFor="let image of entry.images; let i = index">
+              <div>
+                <img
+                  [src]="image"
+                  class="img-responsive centre"
+                  style="max-height: 300px">
+              </div>
+            </div>
 
           </div>
         </div>

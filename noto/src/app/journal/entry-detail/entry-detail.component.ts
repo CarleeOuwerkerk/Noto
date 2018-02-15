@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Entry} from "../entry.model";
 import {JournalService} from "../journal.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'noto-entry-detail',
@@ -33,7 +34,7 @@ export class EntryDetailComponent implements OnInit {
   }
 
   onDeleteEntry() {
-    this.journalService.deleteEntry(this.id);
+    this.journalService.deleteEntry(this.entry, this.id);
     this.router.navigate(['../../'], {relativeTo: this.route});
   }
 

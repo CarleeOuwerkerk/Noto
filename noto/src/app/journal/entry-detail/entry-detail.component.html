@@ -4,7 +4,17 @@
 
       <div class="panel-heading">
         <div class="row pad-left-right">
-          <span class="panelPaddingLeft title pull-left textSize">{{ entry.date }}</span>
+          <span class="panelPaddingLeft title pull-left textSize">{{ entry.date | date}}</span>
+
+          <div class="pull-right panelPaddingRight">
+            <a class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"
+               (click)="onEditEntry()">
+            </a>
+            <a class="btn btn-primary black-background white glyphicon glyphicon-trash"
+               (click)="onDeleteEntry()">
+            </a>
+          </div>
+
         </div>
 
         <div class="panelPaddingLeft row">
@@ -14,13 +24,24 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-12">
+            <h3>{{ entry.title }}</h3>
 
             <p>{{ entry.text }}</p>
-            <img
-              [src]="entry.imageURL"
-              alt="{{ entry.date }}"
-              class="img-responsive centre"
-              style="max-height: 300px">
+
+            <div *ngFor="let image of entry.entryImages">
+              <div>
+                <img
+                  [src]="image"
+                  class="img-responsive centre"
+                  style="max-height: 300px">
+              </div>
+            </div>
+
+            <!--<img-->
+              <!--[src]="entry.imageURL"-->
+              <!--alt="{{ entry.date}} "-->
+              <!--class="img-responsive centre"-->
+              <!--style="max-height: 300px">-->
 
             <!--<hr>-->
 
@@ -39,15 +60,6 @@
         </div>
       </div>
 
-    </div>
-
-    <div style="padding-left: 43%">
-      <a class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"
-         (click)="onEditEntry()">
-      </a>
-      <a class="btn btn-primary black-background white glyphicon glyphicon-trash"
-         (click)="onDeleteEntry()">
-      </a>
     </div>
 
   </div>

@@ -1,27 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header.component';
-import { JournalComponent } from './journal/journal.component';
-import { EntryListComponent } from './journal/entry-list/entry-list.component';
-import { EntryItemComponent } from './journal/entry-item/entry-item.component';
-import { EntryCalendarComponent } from './journal/entry-calendar/entry-calendar.component';
-import { EntryDetailComponent } from './journal/entry-detail/entry-detail.component';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header.component';
+import {JournalComponent} from './journal/journal.component';
+import {EntryListComponent} from './journal/entry-list/entry-list.component';
+import {EntryItemComponent} from './journal/entry-item/entry-item.component';
+import {EntryCalendarComponent} from './journal/entry-calendar/entry-calendar.component';
+import {EntryDetailComponent} from './journal/entry-detail/entry-detail.component';
 import {DropdownDirective} from "./directives/dropdown.directive";
 import {JournalService} from "./journal/journal.service";
 import {AppRoutingModule} from "./app-routing.module";
-import { JournalStartComponent } from './journal/journal-start/journal-start.component';
-import { EntryEditComponent } from './journal/entry-edit/entry-edit.component';
+import {JournalStartComponent} from './journal/journal-start/journal-start.component';
+import {EntryEditComponent} from './journal/entry-edit/entry-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JournalFilterPipe} from "./journal/journal-filter.pipe";
-import { ThrowbackComponent } from './throwback/throwback.component';
-import { ThrowbackDetailComponent } from './throwback/throwback-detail/throwback-detail.component';
-import { ThrowbackStartComponent } from './throwback/throwback-start/throwback-start.component';
-import { StartupComponent } from './startup/startup.component';
-import { LoginFormComponent } from './startup/login-form/login-form.component';
-import { SignupFormComponent } from './startup/signup-form/signup-form.component';
-import { TextFilterPipe } from './journal/text-filter.pipe';
+import {ThrowbackComponent} from './throwback/throwback.component';
+import {ThrowbackDetailComponent} from './throwback/throwback-detail/throwback-detail.component';
+import {ThrowbackStartComponent} from './throwback/throwback-start/throwback-start.component';
+import {StartupComponent} from './startup/startup.component';
+import {LoginFormComponent} from './startup/login-form/login-form.component';
+import {SignupFormComponent} from './startup/signup-form/signup-form.component';
+import {TextFilterPipe} from './journal/text-filter.pipe';
+import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./startup/auth.service";
+import {AuthGuard} from "./startup/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -48,9 +52,13 @@ import { TextFilterPipe } from './journal/text-filter.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule
+    // Http
   ],
-  providers: [JournalService],
+  providers: [JournalService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

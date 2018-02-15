@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./startup/auth.service";
 
 @Component({
   selector: 'noto-header',
@@ -9,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   authenticated: boolean = true;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -17,5 +18,9 @@ export class HeaderComponent implements OnInit {
   // onSelect(page: string){
   //   this.pageSelected.emit(page);
   // }
+
+  onLogout(){
+    this.authService.logoutUser();
+  }
 
 }

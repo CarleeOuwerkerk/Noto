@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'noto-login-form',
@@ -9,24 +10,27 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class LoginFormComponent implements OnInit {
 
   loginForm: FormGroup;
-  constructor() { }
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   private initForm() {
-    let username = '';
+    let email = '';
     let password = '';
 
     this.loginForm = new FormGroup({
-      'username': new FormControl(username, Validators.required),
+      'email': new FormControl(email, Validators.required),
       'password': new FormControl(password, Validators.required),
     });
   }
 
-  onSubmit() {
-
+  onLogin(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    this.authService.loginUser(email, password);
   }
 
 }

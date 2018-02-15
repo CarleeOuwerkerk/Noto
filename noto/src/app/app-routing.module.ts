@@ -10,26 +10,27 @@ import {ThrowbackStartComponent} from "./throwback/throwback-start/throwback-sta
 import {StartupComponent} from "./startup/startup.component";
 import {LoginFormComponent} from "./startup/login-form/login-form.component";
 import {SignupFormComponent} from "./startup/signup-form/signup-form.component";
+import {AuthGuard} from "./startup/auth-guard.service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/journal', pathMatch: 'full'},
   {
-    path: 'journal', component: JournalComponent, children: [
-    {path: '', component: JournalStartComponent},
-    {path: 'new', component: EntryEditComponent},
-    {path: ':id', component: EntryDetailComponent},
-    {path: ':id/edit', component: EntryEditComponent}]
+    path: 'journal', component: JournalComponent, canActivate: [AuthGuard], children: [
+    {path: '', component: JournalStartComponent, canActivate: [AuthGuard]},
+    {path: 'new', component: EntryEditComponent, canActivate: [AuthGuard]},
+    {path: ':id', component: EntryDetailComponent, canActivate: [AuthGuard]},
+    {path: ':id/edit', component: EntryEditComponent, canActivate: [AuthGuard]}]
   },
   {
-    path: 'throwback', component: ThrowbackComponent, children: [
-    {path: '', component: ThrowbackStartComponent},
-    {path: ':id', component: ThrowbackDetailComponent}]
+    path: 'throwback', component: ThrowbackComponent, canActivate: [AuthGuard], children: [
+    {path: '', component: ThrowbackStartComponent, canActivate: [AuthGuard]},
+    {path: ':id', component: ThrowbackDetailComponent, canActivate: [AuthGuard]}]
   },
   {path: 'login', component: LoginFormComponent},
   {path: 'signup', component: SignupFormComponent}
   // { path: 'startup', component: StartupComponent, children: [
   //   { path: 'login', component: LoginFormComponent },
-  //   { path: 'signup', component: SignupFormComponent }
+  // {path: 'signup', component: SignupFormComponent}
   // ] }
 ];
 
