@@ -1,3 +1,75 @@
+//   private initForm() {
+//     let entryDate;
+//     let entryTitle = '';
+//     let entryText = '';
+//     let images = [];
+//
+//     if (this.editMode) {
+//       const entry = this.journalService.getEntry(this.id);
+//       entryDate = entry.date;
+//       entryTitle = entry.title;
+//       entryText = entry.text;
+//       images = entry.images;
+//
+//       // for (let image of entry.imageURL){
+//       //   entryImages.push(image);
+//       // }
+//
+//
+//       // if (entry['imageURL']) {
+//       //   for (let image of entry.imageURL) {
+//       //     entryImages.push(
+//       //       new FormGroup({
+//       //         'url': new FormControl(image.imageURL)
+//       //       })
+//       //     );
+//       //   }
+//       // }
+//
+//       // entryImages = entry.imageURL;
+//       //
+//       // if (entry['images']) {
+//       //   for (let image of entry.imageURL) {
+//       //     entryImages.push(
+//       //       new FormGroup({
+//       //         'imageURL': new FormControl(entry.imageURL, Validators.required)
+//       //       })
+//       //     );
+//       //   }
+//       // }
+//
+//     }
+//
+//     this.entryForm = new FormGroup({
+//       'date': new FormControl(entryDate, Validators.required),
+//       'title': new FormControl(entryTitle),
+//       'text': new FormControl(entryText, Validators.required),
+//       'images': new FormControl(images)
+//     });
+//   }
+//
+//   onSubmit() {
+//     // const newEntry = new Entry(
+//     //   this.entryForm.value['date'],
+//     //   this.entryForm.value['text'],
+//     //   this.entryForm.value['imageURL']);
+//     //   // this.entryForm.value['images']
+//
+//     if (this.editMode) {
+//       this.journalService.updateEntry(this.id, this.entryForm.value);
+//     }
+//     else {
+//       this.journalService.addEntry(this.entryForm.value);
+//     }
+//     this.onCancel();
+//   }
+//
+//   addImage(url: string){
+//     this.entry.images.push(url);
+//   }
+// }
+
+
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -38,59 +110,34 @@ export class EntryEditComponent implements OnInit {
     let entryDate;
     let entryTitle = '';
     let entryText = '';
-    let images = [];
+    let entryImages = new FormArray([]);
 
     if (this.editMode) {
       const entry = this.journalService.getEntry(this.id);
       entryDate = entry.date;
       entryTitle = entry.title;
       entryText = entry.text;
-      images = entry.images;
-
-      // for (let image of entry.imageURL){
-      //   entryImages.push(image);
-      // }
-
-
-      // if (entry['imageURL']) {
-      //   for (let image of entry.imageURL) {
-      //     entryImages.push(
-      //       new FormGroup({
-      //         'url': new FormControl(image.imageURL)
-      //       })
-      //     );
-      //   }
-      // }
-
-      // entryImages = entry.imageURL;
-      //
-      // if (entry['images']) {
-      //   for (let image of entry.imageURL) {
-      //     entryImages.push(
-      //       new FormGroup({
-      //         'imageURL': new FormControl(entry.imageURL, Validators.required)
-      //       })
-      //     );
-      //   }
-      // }
-
+      if (entry['images']) {
+        for (let image of entry.images) {
+          entryImages.push(
+            new FormGroup({
+              'description': new FormControl(image.description),
+              'url': new FormControl(image.url)
+            })
+          );
+        }
+      }
     }
 
     this.entryForm = new FormGroup({
       'date': new FormControl(entryDate, Validators.required),
       'title': new FormControl(entryTitle),
       'text': new FormControl(entryText, Validators.required),
-      'images': new FormControl(images)
+      'images': entryImages
     });
   }
 
   onSubmit() {
-    // const newEntry = new Entry(
-    //   this.entryForm.value['date'],
-    //   this.entryForm.value['text'],
-    //   this.entryForm.value['imageURL']);
-    //   // this.entryForm.value['images']
-
     if (this.editMode) {
       this.journalService.updateEntry(this.id, this.entryForm.value);
     }
@@ -101,8 +148,7 @@ export class EntryEditComponent implements OnInit {
   }
 
   onDeleteEntry() {
-    if (!this.editMode)
-    {
+    if (!this.editMode) {
       return;
     }
     this.journalService.deleteEntry(this.entry, this.id);
@@ -113,11 +159,20 @@ export class EntryEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  chooseDateTime(){
+  chooseDateTime() {
     // ('dateTimePicker1').dateTim
   }
 
-  addImage(url: string){
-    this.entry.images.push(url);
+  onAddImage(){
+    (<FormArray>this.entryForm.get('images')).push(
+      new FormGroup({
+        'description': new FormControl(),
+        'url': new FormControl()
+      })
+    )
+  }
+
+  onDeleteImage(index: number){
+    (<FormArray>this.entryForm.get('images')).removeAt(index);
   }
 }

@@ -13,7 +13,8 @@ import {SignupFormComponent} from "./startup/signup-form/signup-form.component";
 import {AuthGuard} from "./startup/auth-guard.service";
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/journal', pathMatch: 'full'},
+  // {path: '', redirectTo: '/journal', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {
     path: 'journal', component: JournalComponent, canActivate: [AuthGuard], children: [
     {path: '', component: JournalStartComponent, canActivate: [AuthGuard]},

@@ -60,74 +60,117 @@
       </div>
 
 
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label for="text">Text</label>
-              <textarea
-                type="text"
-                id="text"
-                formControlName="text"
-                rows="8"
-                class="form-control"></textarea>
-            </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="text">Text</label>
+            <textarea
+              type="text"
+              id="text"
+              formControlName="text"
+              rows="8"
+              class="form-control"></textarea>
           </div>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label for="images">Image URL</label>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="images">
+          <div
+            class="row"
+            *ngFor="let imageControl of entryForm.get('images').controls; let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px;">
+            <div class="col-xs-12">
               <input
                 type="text"
-                id="images"
-                formControlName="images"
                 class="form-control"
-                #imagePath>
-                <!--ng-required="false"-->
+                formControlName="description">
+            </div>
+            <div class="col-xs-12">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="url"
+                #imageURL>
+            </div>
+            <div class="col-xs-2">
+              <button
+                type="button"
+                class="btn btn-danger"
+              (click)="onDeleteImage(i)">X</button>
+            </div>
+            <img
+              [src]="imageURL.value"
+              style="max-height: 300px; margin-top: 10px;">
+          </div>
 
-
-              <div *ngFor="let image of entry.entryImages; let i = index">
-                <div>
-                  <!--<cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>-->
-                  <img
-                    [src]="image"
-                    class="img-responsive centre"
-                    style="max-height: 300px">
-                  <button class="btn btn-danger col-sm-2 deleteButton" >X</button>
-                </div>
-              </div>
-
+          <div class="row">
+            <div class="col-xs-12"
+                 style="margin-top: 10px;">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onAddImage()">Add Image
+              </button>
             </div>
           </div>
         </div>
 
 
-        <div class="row">
-          <div class="col-xs-12">
-            <img [src]="imagePath.value" class="img-responsive">
-            <button class="btn btn-primary glyphicon glyphicon-remove-circle black-background white"></button>
-          </div>
-        </div>
+      </div>
 
-        <hr>
 
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="submit"
-                    class="btn-primary glyphicon glyphicon-ok btn black-background white"
-                    [disabled]="!entryForm.valid">
-            </button>
-            <button type="button"
-                    (click)="onDeleteEntry()"
-                    class="btn-primary glyphicon glyphicon-trash btn black-background white">
-            </button>
-            <button type="button"
-                    (click)="onCancel()"
-                    class="btn-primary glyphicon glyphicon-remove btn black-background white">
-            </button>
-          </div>
+      <!--<div class="form-group">-->
+      <!--<label for="images">Image URL</label>-->
+      <!--<input-->
+      <!--type="text"-->
+      <!--id="images"-->
+      <!--formControlName="images"-->
+      <!--class="form-control"-->
+      <!--#imagePath>-->
+      <!--&lt;!&ndash;ng-required="false"&ndash;&gt;-->
+
+
+      <!--<div *ngFor="let image of entry.entryImages; let i = index">-->
+      <!--<div>-->
+      <!--&lt;!&ndash;<cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>&ndash;&gt;-->
+      <!--<img-->
+      <!--[src]="image"-->
+      <!--class="img-responsive centre"-->
+      <!--style="max-height: 300px">-->
+      <!--<button class="btn btn-danger col-sm-2 deleteButton">X</button>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <!--</div>-->
+
+
+      <!--<div class="row">-->
+      <!--<div class="col-xs-12">-->
+      <!--<img [src]="imagePath.value" class="img-responsive">-->
+      <!--<button class="btn btn-primary glyphicon glyphicon-remove-circle black-background white"></button>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit"
+                  class="btn-primary glyphicon glyphicon-ok btn black-background white"
+                  [disabled]="!entryForm.valid">
+          </button>
+          <button type="button"
+                  (click)="onDeleteEntry()"
+                  class="btn-primary glyphicon glyphicon-trash btn black-background white">
+          </button>
+          <button type="button"
+                  (click)="onCancel()"
+                  class="btn-primary glyphicon glyphicon-remove btn black-background white">
+          </button>
         </div>
+      </div>
 
     </form>
 

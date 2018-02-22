@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import DateTimeFormat = Intl.DateTimeFormat;
 import {stringify} from "@angular/core/src/util";
+import {Image} from "./image.model";
 
 @Injectable()
 export class Entry {
@@ -12,13 +13,13 @@ export class Entry {
   // public date;
   public title: string;
   public text: string;
-  public images: string[];
+  public images: Image[];
 
   constructor(id: string,
               date: Date,
               title: string,
               text: string,
-              images?: string[])
+              images?: Image[])
   // should I make images an array?
   // Should I also add an array of document type things?
   // or do that instead of the pictures?  just have an

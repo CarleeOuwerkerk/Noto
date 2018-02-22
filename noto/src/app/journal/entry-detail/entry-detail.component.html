@@ -28,32 +28,33 @@
 
             <p>{{ entry.text }}</p>
 
-            <div *ngFor="let image of entry.entryImages">
+            <div *ngFor="let image of entry.images">
               <div>
                 <img
-                  [src]="image"
+                  [src]="image.url"
                   class="img-responsive centre"
                   style="max-height: 300px">
+                {{ image.description }}
               </div>
             </div>
 
             <!--<img-->
-              <!--[src]="entry.imageURL"-->
-              <!--alt="{{ entry.date}} "-->
-              <!--class="img-responsive centre"-->
-              <!--style="max-height: 300px">-->
+            <!--[src]="entry.imageURL"-->
+            <!--alt="{{ entry.date}} "-->
+            <!--class="img-responsive centre"-->
+            <!--style="max-height: 300px">-->
 
             <!--<hr>-->
 
             <!--<div class="centre">-->
-              <!--<a-->
-                <!--class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"-->
-              <!--(click)="onEditEntry()">-->
-              <!--</a>-->
-              <!--<a-->
-                <!--(click)="onDeleteEntry()"-->
-                <!--class="btn btn-primary black-background white glyphicon glyphicon-trash">-->
-              <!--</a>-->
+            <!--<a-->
+            <!--class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"-->
+            <!--(click)="onEditEntry()">-->
+            <!--</a>-->
+            <!--<a-->
+            <!--(click)="onDeleteEntry()"-->
+            <!--class="btn btn-primary black-background white glyphicon glyphicon-trash">-->
+            <!--</a>-->
             <!--</div>-->
 
           </div>
