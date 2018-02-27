@@ -74,6 +74,8 @@
         </div>
       </div>
 
+      <hr>
+
       <div class="row">
         <div class="col-xs-12" formArrayName="images">
           <div
@@ -82,27 +84,31 @@
             [formGroupName]="i"
             style="margin-top: 10px;">
             <div class="col-xs-12">
+              <div style="font-weight: bold;">Image Description</div>
               <input
                 type="text"
                 class="form-control"
                 formControlName="description">
             </div>
             <div class="col-xs-12">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="url"
-                #imageURL>
+              <div style="font-weight: bold; padding-top: 15px;">Image URL</div>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="url"
+                  #imageURL>
             </div>
             <div class="col-xs-2">
               <button
                 type="button"
                 class="btn btn-danger"
-              (click)="onDeleteImage(i)">X</button>
+                (click)="onDeleteImage(i)">X
+              </button>
             </div>
             <img
               [src]="imageURL.value"
               style="max-height: 300px; margin-top: 10px;">
+            <hr>
           </div>
 
           <div class="row">
@@ -119,6 +125,9 @@
 
 
       </div>
+
+      <!--<h2>FILE UPLOAD</h2>-->
+      <!--<input type="file" (change)="onFileSelected($event)">-->
 
 
       <!--<div class="form-group">-->

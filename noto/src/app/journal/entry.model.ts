@@ -20,7 +20,6 @@ export class Entry {
               title: string,
               text: string,
               images?: Image[])
-  // should I make images an array?
   // Should I also add an array of document type things?
   // or do that instead of the pictures?  just have an
   // upload section
@@ -36,3 +35,22 @@ export class Entry {
   }
 
 }
+
+
+
+// @Injectable()
+// export class Person {
+//
+//   public id: string;
+//   public entries: Entry[];
+//
+//   constructor(id: string,
+//               entries: Entry[])
+//   {
+//
+//     this.id = id;
+//     this.entries = entries;
+//
+//   }
+//
+// }

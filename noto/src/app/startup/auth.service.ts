@@ -33,6 +33,10 @@ export class AuthService {
       );
   }
 
+  getUID(){
+    return firebase.auth().currentUser.uid;
+  }
+
   logoutUser(){
     firebase.auth().signOut();
     this.token = null;
