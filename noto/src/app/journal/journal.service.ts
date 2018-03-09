@@ -30,7 +30,10 @@ export class JournalService {
         (response: Response) => {
           const entries: Entry[] = response.json();
           this.entries = entries;
-          this.entriesChanged.next(this.entries.slice());
+
+          if (this.entries != null) {
+            this.entriesChanged.next(this.entries.slice());
+          }
         }
       );
     // .map(
@@ -48,7 +51,9 @@ export class JournalService {
   }
 
   getEntries() {
-    return this.entries.slice();
+    if (this.entries != null) {
+      return this.entries.slice();
+    }
   }
 
   getEntry(id: number) {
@@ -62,7 +67,13 @@ export class JournalService {
     //     (response) => console.log(response),
     //     (error) => console.log(error)
     //   );
-    this.entries.push(entry);
+    if (this.entries != null) {
+      this.entries.push(entry);
+    }
+    else {
+      this.entries = this.entries || [];
+      this.entries.push(entry);
+    }
     this.entries = this.entries.sort(this.sortEntries);
     // this.entriesChanged.next(this.entries.slice());
     this.storeEntries();
@@ -94,8 +105,9 @@ export class JournalService {
   }
 
   getRandomID() {
-    let randomEntry = this.entries[Math.floor(Math.random() * this.entries.length)];
-    return (+randomEntry.id - 1);
+    // let randomEntry = this.entries[Math.floor(Math.random() * this.entries.length)];
+    // return (+randomEntry.id - 1);
+    return Math.floor(Math.random() * (this.entries.length + 1));
   }
 
   sortEntries(entryA: Entry, entryB: Entry) {

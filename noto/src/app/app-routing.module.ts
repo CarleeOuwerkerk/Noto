@@ -11,6 +11,7 @@ import {StartupComponent} from "./startup/startup.component";
 import {LoginFormComponent} from "./startup/login-form/login-form.component";
 import {SignupFormComponent} from "./startup/signup-form/signup-form.component";
 import {AuthGuard} from "./startup/auth-guard.service";
+import {EntryCalendarComponent} from "./journal/entry-calendar/entry-calendar.component";
 
 const appRoutes: Routes = [
   // {path: '', redirectTo: '/journal', pathMatch: 'full'},
@@ -22,6 +23,9 @@ const appRoutes: Routes = [
     {path: ':id', component: EntryDetailComponent, canActivate: [AuthGuard]},
     {path: ':id/edit', component: EntryEditComponent, canActivate: [AuthGuard]}]
   },
+  // {
+  //   path: 'calendar', component: EntryCalendarComponent, canActivate: [AuthGuard]
+  // },
   {
     path: 'throwback', component: ThrowbackComponent, canActivate: [AuthGuard], children: [
     {path: '', component: ThrowbackStartComponent, canActivate: [AuthGuard]},

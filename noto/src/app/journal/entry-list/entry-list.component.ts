@@ -11,14 +11,16 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class EntryListComponent implements OnInit, OnDestroy {
 
-  entries: Entry[];
+  entries: Entry[] = null;
   private subscription: Subscription;
   term: String = "";
   // journalfilter: String = "";
+  listView: boolean = true;
 
   constructor(private journalService: JournalService,
               private router: Router,
               private route: ActivatedRoute) {
+    // this.entries = null;
   }
 
   ngOnInit() {
@@ -33,17 +35,28 @@ export class EntryListComponent implements OnInit, OnDestroy {
     this.entries = this.journalService.getEntries();
   }
 
-  onNewEntry() {
-    this.router.navigate(['new'], {relativeTo: this.route});
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    // this.entries = null;
   }
 
   onKeyPress(value: string) {
     this.term = value;
     // this.journalfilter = value;
   }
+
+  onNewEntry() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  // openListView(){
+  //   // this.listView = true;
+  //   this.router.navigate(['journal'], {relativeTo: this.route});
+  // }
+  //
+  // openCalendarView(){
+  //   // this.listView = false;
+  //   this.router.navigate(['calendar'], {relativeTo: this.route});
+  // }
 
 }

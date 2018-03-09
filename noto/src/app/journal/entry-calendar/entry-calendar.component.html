@@ -1,12 +1,61 @@
 <div class="row">
-  <div class="col-md-5">
-    <h2>Calendar</h2>
-    <div class="col-md-7">
+  <div class="col-xs-12">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <div class="row pad-left-right">
+          <span class="panelPaddingLeft title pull-left textSize">Journal</span>
+          <div class="panelPaddingRight pull-right pad-left-right ">
+            <a class="btn btn-primary black-background white glyphicon glyphicon-plus"
+               (click)="onNewEntry()"></a>
+          </div>
+        </div>
+        <div class="panelPaddingLeft row">
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <my-date-picker [options]="myDatePickerOptions"
+                            (dateChanged)="onDateChanged($event)"></my-date-picker>
 
 
 
-    <!--<noto-entry-list>-->
-    <!--</noto-entry-list>-->
+              <div class="scrollbar2" id="list-style">
+                <div class="row col-xs-12">
 
+                  <!--<div *ngIf="entries != null">-->
+
+                    <div *ngFor="let entry of entries; let i = index">
+
+
+                  <noto-entry-item
+                    *ngIf="entry.date.toString() == selectedDate"
+                    [entry]="entry"
+                    [index]="i">
+                  </noto-entry-item>
+
+                    </div>
+
+                    <!--if (entry.date.toString() == this.selectedDate){-->
+                    <!--this.filteredEntries = this.filteredEntries || [];-->
+                    <!--this.filteredEntries.push(entry);-->
+                    <!--}                    -->
+
+                <!--</div>-->
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>

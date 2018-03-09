@@ -74,11 +74,13 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {JournalService} from "../journal.service";
 import {Entry} from "../entry.model";
+import {IMyDate, IMyDateModel, IMyDpOptions} from 'mydatepicker';
+import {PromptService} from "../prompt.service";
 
 @Component({
   selector: 'noto-entry-edit',
   templateUrl: './entry-edit.component.html',
-  styleUrls: ['./entry-edit.component.css']
+  styleUrls: ['./entry-edit.component.css'],
 })
 export class EntryEditComponent implements OnInit {
 
@@ -86,10 +88,30 @@ export class EntryEditComponent implements OnInit {
   editMode = false;
   entryForm: FormGroup;
   entry: Entry = null;
+  journalPrompt: string = "";
+  date: Date = new Date();
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+    disableDateRanges: [{
+      begin: {
+        year: this.date.getFullYear(),
+        month: (this.date.getMonth() + 1),
+        day: (this.date.getDate() + 1)
+      }, end: {year: 3000, month: 11, day: 20}
+    }],
+  };
+
+  private selDate: IMyDate = null;
+    // {year: 0, month: 0, day: 0};
+
+  // dateModel: any = {start_date: new Date()}
+
 
   constructor(private route: ActivatedRoute,
               private journalService: JournalService,
-              private router: Router) {
+              private router: Router,
+              private promptService: PromptService) {
   }
 
   ngOnInit() {
@@ -102,18 +124,39 @@ export class EntryEditComponent implements OnInit {
         }
       );
 
-    this.entry = this.journalService.getEntry(this.id);
+    // this.entry = this.journalService.getEntry(this.id);
   }
 
   private initForm() {
     let entryDate;
+
+    // let d: Date = new Date();
+    // this.selDate = {year: d.getFullYear(),
+    //   month: d.getMonth() + 1,
+    //   day: d.getDate()};
+
     let entryTitle = '';
     let entryText = '';
     let entryImages = new FormArray([]);
 
     if (this.editMode) {
+      this.entry = this.journalService.getEntry(this.id);
       const entry = this.journalService.getEntry(this.id);
       entryDate = entry.date;
+
+      // let d: Date = new Date();
+      // this.selDate = {year: entry.date.getFullYear(),
+      //   month: entry.date.getMonth() + 1,
+      //   day: entry.date.getDate()};
+
+      // console.log(entryDate.date);
+      // entryDate.date;
+
+      // this.selDate = {year: 1,
+      //   month: 1,
+      //   day: 1};
+      this.selDate = entryDate;
+
       entryTitle = entry.title;
       entryText = entry.text;
       if (entry['images']) {
@@ -134,14 +177,22 @@ export class EntryEditComponent implements OnInit {
       'text': new FormControl(entryText, Validators.required),
       'images': entryImages
     });
+
+    // this.entryForm.patchValue({date: this.entry.date});
+    // this.entryForm.setValue({date: this.entry.date});
+    // this.entryForm.value.date.setValue(this.entry.date);
+    // this.entryForm.setValue(this.entry.date);
   }
 
   onSubmit() {
+    const values = this.entryForm.value;
+    const newEntry = new Entry("1", values.date.formatted, values.title, values.text, values.images);
+
     if (this.editMode) {
-      this.journalService.updateEntry(this.id, this.entryForm.value);
+      this.journalService.updateEntry(this.id, newEntry);
     }
     else {
-      this.journalService.addEntry(this.entryForm.value);
+      this.journalService.addEntry(newEntry);
     }
     this.onCancel();
   }
@@ -158,10 +209,6 @@ export class EntryEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  chooseDateTime() {
-    // ('dateTimePicker1').dateTim
-  }
-
   onAddImage(){
     (<FormArray>this.entryForm.get('images')).push(
       new FormGroup({
@@ -174,4 +221,28 @@ export class EntryEditComponent implements OnInit {
   onDeleteImage(index: number){
     (<FormArray>this.entryForm.get('images')).removeAt(index);
   }
+
+  // setDate(): void {
+  //   this.entryForm.patchValue({myDate: {
+  //     date: {
+  //       year: this.entry.date.getFullYear(),
+  //       month: this.entry.date.getMonth() + 1,
+  //       day: this.entry.date.getDate()}
+  //   }});
+  // }
+
+  onGetPrompt(){
+    this.journalPrompt = this.promptService.getPrompt();
+  }
+
+  onDateChanged(event: IMyDateModel) {
+    // Update value of selDate variable
+    this.selDate = event.date;
+  }
+
+  // Calling this function clears the selected date
+  clearDate() {
+    this.selDate = null;
+  }
+
 }

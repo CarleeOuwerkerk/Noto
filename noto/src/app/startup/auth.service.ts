@@ -18,6 +18,7 @@ export class AuthService {
   }
 
   loginUser(email:string, pass: string){
+
     firebase.auth().signInWithEmailAndPassword(email, pass)
       .then(
         response => {

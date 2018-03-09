@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header.component';
 import {JournalComponent} from './journal/journal.component';
@@ -26,6 +25,12 @@ import {HttpModule} from "@angular/http";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./startup/auth.service";
 import {AuthGuard} from "./startup/auth-guard.service";
+// import {MessagingService} from "./messaging.service";
+import {AngularFireDatabase} from "angularfire2/database";
+import {FirebaseApp} from "angularfire2";
+import {AngularFireAuth} from "angularfire2/auth";
+import { MyDatePickerModule } from 'mydatepicker';
+import {PromptService} from "./journal/prompt.service";
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import {AuthGuard} from "./startup/auth-guard.service";
     StartupComponent,
     LoginFormComponent,
     SignupFormComponent,
-    TextFilterPipe,
+    TextFilterPipe
+    // AngularFireDatabase
   ],
   imports: [
     BrowserModule,
@@ -54,10 +60,21 @@ import {AuthGuard} from "./startup/auth-guard.service";
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    MyDatePickerModule
+    // AngularFireDatabase
     // Http
   ],
-  providers: [JournalService, AuthService, AuthGuard],
+  providers: [
+    JournalService,
+    AuthService,
+    AuthGuard,
+    // MessagingService,
+    AngularFireDatabase,
+    FirebaseApp,
+    AngularFireAuth,
+    PromptService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,25 +1,46 @@
 <div class="row">
   <div class="col-md-5">
-    <noto-entry-list>
-      <!--(entrySelected)="selectedEntry = $event"-->
-    </noto-entry-list>
-  </div>
-  <div class="col-md-7">
-    <router-outlet></router-outlet>
-  </div>
+
+
+    <!--<div class="row">-->
+    <!--<div class="col-xs-12">-->
+
+
+    <ng-template [ngIf]="isListView()">
+    <!--<div class="panel panel-default">-->
+
+    <noto-entry-list></noto-entry-list>
+    </ng-template>
+
+
+    <ng-template [ngIf]="!isListView()">
+      <!--<div class="panel panel-default">-->
+
+      <noto-entry-calendar></noto-entry-calendar>
+    </ng-template>
+
+
+
+    <div style="padding-left: 41%">
+      <a
+        class="btn btn-primary glyphicon glyphicon-list btn black-background white"
+        style="border-top-right-radius: 0%; border-bottom-right-radius: 0%"
+        (click)="openListView()">
+      </a>
+      <a
+        class="btn btn-primary glyphicon glyphicon-calendar btn black-background white"
+        style="margin-left: -3px; border-top-left-radius: 0%; border-bottom-left-radius: 0%;"
+        (click)="openCalendarView()">
+      </a>
+    </div>
+
+    </div>
+
+
+    <!--</div>-->
+    <div class="col-md-7">
+      <router-outlet></router-outlet>
+    </div>
 </div>
+    <!--</div>-->
 
-
-<!--<div class="row">-->
-<!--<div class="col-md-5">-->
-<!--<cms-contact-list></cms-contact-list>-->
-<!--</div>-->
-<!--<div class="col-md-7">-->
-<!--<router-outlet></router-outlet>-->
-<!--<ng-template #infoText>-->
-<!--<h5>Please select a contact.</h5>-->
-<!--</ng-template>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<noto-entry-calendar></noto-entry-calendar>-->
