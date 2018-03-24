@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   authenticated: boolean = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

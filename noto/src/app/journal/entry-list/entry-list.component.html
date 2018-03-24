@@ -5,7 +5,10 @@
 
         <div class="panel-heading">
           <div class="row pad-left-right">
-            <span class="panelPaddingLeft title pull-left textSize">Journal</span>
+            <span
+              style="font-family: 'Poppins', sans-serif;"
+              class="panelPaddingLeft title pull-left textSize">Journal
+            </span>
             <div class="panelPaddingRight pull-right pad-left-right ">
               <a class="btn btn-primary black-background white glyphicon glyphicon-plus"
                  (click)="onNewEntry()"></a>
@@ -14,8 +17,10 @@
           <div class="panelPaddingLeft row">
             <div class="input-group pull-left pad-left-right col-xs-7">
 
-              <input class="form-control"
-                     placeholder="Search by date, title, or text"
+              <input
+                style="font-family: 'Raleway', sans-serif;"
+                class="form-control"
+                     placeholder="Search by title or text"
                      #searchBox
                      (keypress)="onKeyPress(searchBox.value)">
             </div>
@@ -31,12 +36,48 @@
           <div class="row col-xs-12">
             <!--<div class="col-xs-12" style="overflow-y: scroll;">-->
 
-            <noto-entry-item
-              *ngFor="let entry of entries; let i = index"
-              [entry]="entry"
-              [index]="i">
-              <!--(entrySelected)="onEntrySelected(entry)"-->
-            </noto-entry-item>
+
+
+
+            <!--<noto-entry-item-->
+              <!--*ngFor="let entry of entries | journalFilter : [term]; let i = index"-->
+              <!--[entry]="entry"-->
+              <!--[index]="i">-->
+              <!--&lt;!&ndash;(entrySelected)="onEntrySelected(entry)"&ndash;&gt;-->
+            <!--</noto-entry-item>-->
+
+
+
+
+
+
+            <div *ngFor="let entry of entries; let i = index">
+
+
+              <noto-entry-item
+                *ngIf="(entry.text.toLowerCase().includes(term.toLowerCase()) || entry.title.toLowerCase().includes(term.toLowerCase()))"
+                [entry]="entry"
+                [index]="i">
+              </noto-entry-item>
+
+            </div>
+
+
+
+
+
+
+
+            <!--<div *ngFor="let entry of entries; let i = index">-->
+
+
+              <!--<noto-entry-item-->
+                <!--*ngIf="entry.date.toString() == selectedDate"-->
+                <!--[entry]="entry"-->
+                <!--[index]="i">-->
+              <!--</noto-entry-item>-->
+
+            <!--</div>-->
 
             <!--<div class="force-overflow"></div>-->
             <!--</div>-->
@@ -44,6 +85,23 @@
 
           <!--</div>-->
         </div>
+
+
+
+        <!--<div *ngFor="let entry of entries; let i = index">-->
+
+
+          <!--<noto-entry-item-->
+            <!--[entry]="entry"-->
+            <!--[index]="i">-->
+          <!--</noto-entry-item>-->
+
+        <!--</div>-->
+
+
+        <!--<div class="scrollbar2" id="list-style">     -->
+
+
 
       </div>
 

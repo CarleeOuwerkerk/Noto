@@ -10,10 +10,17 @@ export class EntryItemComponent implements OnInit {
 
   @Input() entry: Entry;
   @Input() index: number;
+  entrySample: string = "";
 
   // constructor(private journalService: JournalService) { }
 
   ngOnInit() {
+    if (this.entry.title) {
+      this.entrySample = this.entry.title;
+    }
+    else {
+      this.entrySample = this.entry.text;
+    }
   }
 
 }

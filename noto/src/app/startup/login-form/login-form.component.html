@@ -17,8 +17,12 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="email">Email</label>
+              <label
+                style="font-family: 'Poppins', sans-serif;"
+                for="email">Email
+              </label>
               <input
+                style="font-family: 'Raleway', sans-serif;"
                 type="text"
                 id="email"
                 formControlName="email"
@@ -31,8 +35,12 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="password">Password</label>
+              <label
+                style="font-family: 'Poppins', sans-serif;"
+                for="password">Password
+              </label>
               <input
+                style="font-family: 'Raleway', sans-serif;"
                 type="password"
                 id="password"
                 formControlName="password"
@@ -50,12 +58,19 @@
             <!--</button>-->
 
             <button class="btn btn-primary black-background white"
-               type="submit"
-               style="z-index: 1">
+                    type="submit"
+                    style="font-family: 'Poppins', sans-serif; z-index: 1"
+                    [disabled]="!f.valid">
               Log In
             </button>
 
           </div>
+        </div>
+
+        <div
+          style="font-family: 'Raleway', sans-serif; text-align: left; padding-top: 8px;"
+          *ngIf="!authWorked">
+          Email or password was incorrect.
         </div>
 
       </form>

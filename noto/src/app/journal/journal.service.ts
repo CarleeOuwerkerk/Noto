@@ -107,7 +107,11 @@ export class JournalService {
   getRandomID() {
     // let randomEntry = this.entries[Math.floor(Math.random() * this.entries.length)];
     // return (+randomEntry.id - 1);
-    return Math.floor(Math.random() * (this.entries.length + 1));
+    if (this.entries == null)
+    {
+      return;
+    }
+    return Math.floor(Math.random() * (this.entries.length)); //+ 1));
   }
 
   sortEntries(entryA: Entry, entryB: Entry) {

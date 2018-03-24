@@ -14,10 +14,10 @@ export class JournalFilterPipe implements PipeTransform {
       (entry: any) =>
         entry.text.toLowerCase().includes(term.toLowerCase())
       ||
-      entry.date.toLowerCase().includes(term.toLowerCase())
-        // ||
-        // ( entry.date | date )
-      ||
+      // entry.date.toLowerCase().includes(term.toLowerCase())
+      //   // ||
+      //   // ( entry.date | date )
+      // ||
       entry.title.toLowerCase().includes(term.toLowerCase())
     );
 

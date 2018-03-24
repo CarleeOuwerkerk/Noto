@@ -22,6 +22,7 @@ export class EntryCalendarComponent implements OnInit {
     dateFormat: 'mm/dd/yyyy',
     inline: true,
     selectorWidth: "100%",
+    firstDayOfWeek: "su",
     // disableDateRanges: [{
     //   begin: {
     //     year: this.date.getFullYear(),

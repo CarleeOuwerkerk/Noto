@@ -20,6 +20,9 @@ export class ThrowbackComponent implements OnInit {
 
   getRandomEntry(){
     this.randomID = this.journalService.getRandomID();
+    if (this.randomID == null){
+      return;
+    }
     this.displayRandomEntry();
   }
 

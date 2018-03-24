@@ -10,6 +10,7 @@ import {AuthService} from "../auth.service";
 export class LoginFormComponent implements OnInit {
 
   loginForm: FormGroup;
+  authWorked: boolean = true;
 
   constructor(private authService: AuthService) { }
 
@@ -30,7 +31,23 @@ export class LoginFormComponent implements OnInit {
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
+    // let error = this.authService.loginUser(email, password);
     this.authService.loginUser(email, password);
+
+    // console.log(error);
+    // console.log(error);
+    // {
+    //   this.authWorked = false;
+    // };
+    // setTimeout(this.authService.loginUser(email, password), 500000);
+    // if (!this.authService.isAuthenticated()) {
+    //   this.authWorked = false;
+    // }
+    // if (!this.authService.loginUser(email, password))
+    // {
+    //   this.authWorked = false;
+    // }
+
   }
 
 }

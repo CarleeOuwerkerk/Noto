@@ -38,18 +38,41 @@
     <div>
       <ul class="nav navbar-nav">
         <ng-template [ngIf]="authService.isAuthenticated()">
-          <li routerLinkActive="active"><a routerLink="/journal">Journal</a></li>
-          <li routerLinkActive="active"><a routerLink="/throwback">Throwback</a></li>
+          <li routerLinkActive="active">
+            <a
+              style="font-family: 'Poppins', sans-serif;"
+              routerLink="/journal">
+              Journal
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a
+              style="font-family: 'Poppins', sans-serif;"
+              routerLink="/throwback">
+              Throwback
+            </a>
+          </li>
         </ng-template>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!authService.isAuthenticated()">
-          <li routerLinkActive="active"><a routerLink="/login">Log In</a></li>
-          <li routerLinkActive="active"><a routerLink="/signup">Sign Up</a></li>
+          <li routerLinkActive="active">
+            <a
+              style="font-family: 'Poppins', sans-serif;"
+              routerLink="/login">
+              Log In
+            </a></li>
+          <li routerLinkActive="active">
+            <a
+              style="font-family: 'Poppins', sans-serif;"
+              routerLink="/signup">
+              Sign Up
+            </a>
+          </li>
         </ng-template>
 
         <li><a
-          style="cursor: pointer;"
+          style="font-family: 'Poppins', sans-serif; cursor: pointer;"
           (click)="onLogout()"
           *ngIf="authService.isAuthenticated()">Log Out</a></li>
 

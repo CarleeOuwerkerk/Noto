@@ -7,11 +7,11 @@ export class TextFilterPipe implements PipeTransform {
 
   transform(text: string, ): any {
 
-    if (text.length < 30){
+    if (text.length < 35){
       return text;
     }
     else {
-      return (text.substr(0, 30) + " . . .");
+      return (text.substr(0, 35) + " . . .");
     }
 
   }

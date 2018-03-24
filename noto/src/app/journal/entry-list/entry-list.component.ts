@@ -27,7 +27,7 @@ export class EntryListComponent implements OnInit, OnDestroy {
     this.subscription = this.journalService.entriesChanged
       .subscribe(
         (entries: Entry[]) => {
-          this.journalService.initEntries();
+          // this.journalService.initEntries();
           this.entries = entries;
         }
       );

@@ -4,7 +4,8 @@
 
       <div class="panel-heading">
         <div class="row pad-left-right">
-          <span class="panelPaddingLeft title pull-left textSize">{{ entry.date | date}}</span>
+          <span style="font-family: 'Poppins', sans-serif;"
+                class="panelPaddingLeft title pull-left textSize">{{ entry.date | date}}</span>
 
           <div class="pull-right panelPaddingRight">
             <a class="hover btn btn-primary black-background white glyphicon glyphicon-pencil"
@@ -21,20 +22,23 @@
         </div>
       </div>
 
+      <!--<div class="panel-body scrollbar3" id="list-style">-->
+
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-12">
-            <h3>{{ entry.title }}</h3>
+            <h3 style="font-family: 'Poppins', sans-serif;">{{ entry.title }}</h3>
 
-            <p>{{ entry.text }}</p>
+            <p style="font-family: 'Raleway', sans-serif;">{{ entry.text }}</p>
 
             <div *ngFor="let image of entry.images">
               <div>
                 <img
                   [src]="image.url"
                   class="img-responsive centre"
-                  style="max-height: 300px">
-                {{ image.description }}
+                  style="max-height: 300px; padding-top: 5px;">
+                <!--<hr>-->
+                <!--{{ image.description }}-->
               </div>
             </div>
 
@@ -60,6 +64,8 @@
           </div>
         </div>
       </div>
+
+    <!--</div>-->
 
     </div>
 

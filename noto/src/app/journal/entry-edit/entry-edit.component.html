@@ -23,180 +23,211 @@
       <div class="row">
         <div class="col-xs-12">
           <!--<div class="form-group">-->
-          <label for="date">Date</label>
+          <label
+            style="font-family: 'Poppins', sans-serif;"
+            for="date">Date
+          </label>
           <!--<div>{{ entry.date }}</div>-->
           <my-date-picker
             name="date"
             id="date"
-            class="form-group"
+            class="form-group test"
+            style="font-family: 'Raleway', sans-serif;"
             formControlName="date"
             [options]="myDatePickerOptions"
             [selDate]="selDate"
             (dateChanged)="onDateChanged($event)">
+            <!--pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">-->
           </my-date-picker>
         </div>
       </div>
-  <!--</div>-->
+      <!--</div>-->
 
-  <!--type="text"-->
-  <!--class="form-control"-->
-  <!--<my-date-picker-->
-  <!--name="mydate"-->
-  <!--[options]="myDatePickerOptions"-->
-  <!--[(ngModel)]="model" required>-->
-  <!--</my-date-picker>-->
-
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          formControlName="title"
-          class="form-control">
-      </div>
-    </div>
-  </div>
-
-
-  <!--test-->
-
-  <button
-    class="btn btn-primary"
-    type="button"
-    (click)="onGetPrompt()">
-    Prompt
-  </button>
-
-  <div class="col-xs-12">
-    <h3>{{ journalPrompt }}</h3>
-  </div>
-
-  <!--test-->
-
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="form-group">
-        <label for="text">Text</label>
-        <textarea
-          type="text"
-          id="text"
-          formControlName="text"
-          rows="8"
-          class="form-control"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-xs-12" formArrayName="images">
-      <div
-        class="row"
-        *ngFor="let imageControl of entryForm.get('images').controls; let i = index"
-        [formGroupName]="i"
-        style="margin-top: 10px;">
-        <div class="col-xs-12">
-          <div style="font-weight: bold;">Image Description</div>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="description">
-        </div>
-        <div class="col-xs-12">
-          <div style="font-weight: bold; padding-top: 15px;">Image URL</div>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="url"
-            #imageURL>
-        </div>
-        <div class="col-xs-2">
-          <button
-            type="button"
-            class="btn btn-danger"
-            (click)="onDeleteImage(i)">X
-          </button>
-        </div>
-        <img
-          [src]="imageURL.value"
-          style="max-height: 300px; margin-top: 10px;">
-        <hr>
-      </div>
+      <!--type="text"-->
+      <!--class="form-control"-->
+      <!--<my-date-picker-->
+      <!--name="mydate"-->
+      <!--[options]="myDatePickerOptions"-->
+      <!--[(ngModel)]="model" required>-->
+      <!--</my-date-picker>-->
 
       <div class="row">
-        <div class="col-xs-12"
-             style="margin-top: 10px;">
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="onAddImage()">Add Image
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label
+              for="title"
+              style="font-family: 'Poppins', sans-serif; padding-top: 10px;">Title
+            </label>
+            <input
+              style="font-family: 'Raleway', sans-serif;"
+              type="text"
+              id="title"
+              formControlName="title"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+
+
+      <!--test-->
+
+      <button
+        class="btn btn-primary black-background white"
+        type="button"
+        (click)="onGetPrompt()"
+        style="font-family: 'Poppins', sans-serif;">
+        Prompt
+      </button>
+
+      <!--<div class="col-xs-12">-->
+      <h4 style="font-family: 'Raleway', sans-serif;">{{ journalPrompt }}</h4>
+      <!--</div>-->
+
+      <!--test-->
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label
+              style="font-family: 'Poppins', sans-serif;"
+              for="text">Text
+            </label>
+            <textarea
+              style="font-family: 'Raleway', sans-serif;"
+              type="text"
+              id="text"
+              formControlName="text"
+              rows="8"
+              class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName="images">
+          <div
+            class="row"
+            *ngFor="let imageControl of entryForm.get('images'); let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px;">
+            <div class="col-xs-12">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: bold;">Image Description</div>
+              <input
+                style="font-family: 'Raleway', sans-serif;"
+                type="text"
+                class="form-control"
+                formControlName="description">
+            </div>
+            <div class="col-xs-12">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: bold; padding-top: 15px;">Image URL</div>
+              <input
+                style="font-family: 'Raleway', sans-serif;"
+                type="text"
+                class="form-control"
+                formControlName="url"
+                #imageURL
+                required>
+            </div>
+            <div class="col-xs-2">
+
+
+              <!--<button-->
+              <!--type="button"-->
+              <!--class="btn black-background white glyphicon glyphicon-remove"-->
+              <!--style="margin-top: 10px;"-->
+              <!--(click)="onDeleteImage(i)">X-->
+              <!--</button>-->
+
+              <button type="button"
+                      (click)="onDeleteImage(i)"
+                      style="margin-top: 10px;"
+                      class="btn-primary glyphicon glyphicon-remove btn black-background white">
+              </button>
+
+
+            </div>
+            <img
+              [src]="imageURL.value"
+              class="col-sm-offset-1 col-md-offset-2"
+              style="max-height: 300px; margin-top: 10px;">
+            <hr>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12"
+                 style="margin-top: 10px;">
+              <button
+                style="font-family: 'Poppins', sans-serif;"
+                type="button"
+                class="btn btn-primary black-background white"
+                (click)="onAddImage()">Add Image
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!--<h2>FILE UPLOAD</h2>-->
+      <!--<input type="file" (change)="onFileSelected($event)">-->
+
+
+      <!--<div class="form-group">-->
+      <!--<label for="images">Image URL</label>-->
+      <!--<input-->
+      <!--type="text"-->
+      <!--id="images"-->
+      <!--formControlName="images"-->
+      <!--class="form-control"-->
+      <!--#imagePath>-->
+      <!--&lt;!&ndash;ng-required="false"&ndash;&gt;-->
+
+
+      <!--<div *ngFor="let image of entry.entryImages; let i = index">-->
+      <!--<div>-->
+      <!--&lt;!&ndash;<cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>&ndash;&gt;-->
+      <!--<img-->
+      <!--[src]="image"-->
+      <!--class="img-responsive centre"-->
+      <!--style="max-height: 300px">-->
+      <!--<button class="btn btn-danger col-sm-2 deleteButton">X</button>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <!--</div>-->
+
+
+      <!--<div class="row">-->
+      <!--<div class="col-xs-12">-->
+      <!--<img [src]="imagePath.value" class="img-responsive">-->
+      <!--<button class="btn btn-primary glyphicon glyphicon-remove-circle black-background white"></button>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit"
+                  class="btn-primary glyphicon glyphicon-ok btn black-background white"
+                  [disabled]="!entryForm.valid">
+          </button>
+          <button type="button"
+                  (click)="onDeleteEntry()"
+                  class="btn-primary glyphicon glyphicon-trash btn black-background white"
+                  [disabled]="!editMode">
+          </button>
+          <button type="button"
+                  (click)="onCancel()"
+                  class="btn-primary glyphicon glyphicon-remove btn black-background white">
           </button>
         </div>
       </div>
-    </div>
 
+    </form>
 
   </div>
-
-  <!--<h2>FILE UPLOAD</h2>-->
-  <!--<input type="file" (change)="onFileSelected($event)">-->
-
-
-  <!--<div class="form-group">-->
-  <!--<label for="images">Image URL</label>-->
-  <!--<input-->
-  <!--type="text"-->
-  <!--id="images"-->
-  <!--formControlName="images"-->
-  <!--class="form-control"-->
-  <!--#imagePath>-->
-  <!--&lt;!&ndash;ng-required="false"&ndash;&gt;-->
-
-
-  <!--<div *ngFor="let image of entry.entryImages; let i = index">-->
-  <!--<div>-->
-  <!--&lt;!&ndash;<cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>&ndash;&gt;-->
-  <!--<img-->
-  <!--[src]="image"-->
-  <!--class="img-responsive centre"-->
-  <!--style="max-height: 300px">-->
-  <!--<button class="btn btn-danger col-sm-2 deleteButton">X</button>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <!--</div>-->
-
-
-  <!--<div class="row">-->
-  <!--<div class="col-xs-12">-->
-  <!--<img [src]="imagePath.value" class="img-responsive">-->
-  <!--<button class="btn btn-primary glyphicon glyphicon-remove-circle black-background white"></button>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <hr>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <button type="submit"
-              class="btn-primary glyphicon glyphicon-ok btn black-background white"
-              [disabled]="!entryForm.valid">
-      </button>
-      <button type="button"
-              (click)="onDeleteEntry()"
-              class="btn-primary glyphicon glyphicon-trash btn black-background white">
-      </button>
-      <button type="button"
-              (click)="onCancel()"
-              class="btn-primary glyphicon glyphicon-remove btn black-background white">
-      </button>
-    </div>
-  </div>
-
-  </form>
-
-</div>
 </div>

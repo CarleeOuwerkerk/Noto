@@ -4,8 +4,11 @@
   class="list-group-item clearfix">
   <!--(click)="onSelected()">-->
   <div class="pull-left">
-    <h4 class="list-group-item-heading">
-      {{ entry.date | date }} &nbsp; &nbsp; {{ entry.text | textFilter }}
+    <h4 class="list-group-item-heading"
+    style="font-family: 'Poppins', sans-serif;">
+      {{ entry.date | date }} &nbsp; &nbsp;
+      <div
+      style="font-family: 'Raleway', sans-serif;">{{ entrySample | textFilter }}</div>
     </h4>
     <!--<p class="list-group-item-text">{{ entry.text }}</p>-->
   </div>

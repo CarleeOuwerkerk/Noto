@@ -17,8 +17,12 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="first">First Name</label>
+              <label
+                style="font-family: 'Poppins', sans-serif;"
+                for="first">First Name
+              </label>
               <input
+                style="font-family: 'Raleway', sans-serif;"
                 type="text"
                 id="first"
                 formControlName="first"
@@ -30,8 +34,12 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="last">Last Name</label>
+              <label
+                style="font-family: 'Poppins', sans-serif;"
+                for="last">Last Name
+              </label>
               <input
+                style="font-family: 'Raleway', sans-serif;"
                 type="text"
                 id="last"
                 formControlName="last"
@@ -43,8 +51,12 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="email">Email</label>
+              <label
+                style="font-family: 'Poppins', sans-serif;"
+                for="email">Email
+              </label>
               <input
+                style="font-family: 'Raleway', sans-serif;"
                 type="text"
                 id="email"
                 formControlName="email"
@@ -54,23 +66,27 @@
         </div>
 
         <!--<div class="row">-->
-          <!--<div class="col-xs-6">-->
-            <!--<div class="form-group">-->
-              <!--<label for="username">Username</label>-->
-              <!--<input-->
-                <!--type="text"-->
-                <!--id="username"-->
-                <!--formControlName="username"-->
-                <!--class="form-control">-->
-            <!--</div>-->
-          <!--</div>-->
+        <!--<div class="col-xs-6">-->
+        <!--<div class="form-group">-->
+        <!--<label for="username">Username</label>-->
+        <!--<input-->
+        <!--type="text"-->
+        <!--id="username"-->
+        <!--formControlName="username"-->
+        <!--class="form-control">-->
+        <!--</div>-->
+        <!--</div>-->
         <!--</div>-->
 
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="password">Password</label>
+              <label
+                style="font-family: 'Poppins', sans-serif;"
+                for="password">Password
+              </label>
               <input
+                style="font-family: 'Raleway', sans-serif;"
                 type="password"
                 id="password"
                 formControlName="password"
@@ -82,13 +98,15 @@
         <div class="row">
           <div class="col-xs-12" style="padding-left: 19%">
             <!--<button type="submit"-->
-                    <!--class="btn black-background white"-->
-                    <!--[disabled]="!entryForm.valid">Sign Up-->
+            <!--class="btn black-background white"-->
+            <!--[disabled]="!entryForm.valid">Sign Up-->
             <!--</button>-->
 
             <button class="btn btn-primary black-background white"
-               type="submit">
-               <!--style="z-index: 1">-->
+                    type="submit"
+                    [disabled]="!f.valid"
+                    style="font-family: 'Poppins', sans-serif;">
+              <!--style="z-index: 1">-->
               Sign Up
             </button>
           </div>

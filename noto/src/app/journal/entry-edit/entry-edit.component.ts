@@ -90,9 +90,15 @@ export class EntryEditComponent implements OnInit {
   entry: Entry = null;
   journalPrompt: string = "";
   date: Date = new Date();
+  test = {
+    year: this.date.getFullYear(),
+    month: (this.date.getMonth() + 1),
+    day: (this.date.getDate() + 1)
+  };
 
   myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'mm/dd/yyyy',
+    firstDayOfWeek: "su",
     disableDateRanges: [{
       begin: {
         year: this.date.getFullYear(),
@@ -102,7 +108,7 @@ export class EntryEditComponent implements OnInit {
     }],
   };
 
-  private selDate: IMyDate = null;
+  public selDate: IMyDate = this.test;
     // {year: 0, month: 0, day: 0};
 
   // dateModel: any = {start_date: new Date()}
