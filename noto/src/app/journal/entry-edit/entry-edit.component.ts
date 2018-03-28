@@ -251,4 +251,7 @@ export class EntryEditComponent implements OnInit {
     this.selDate = null;
   }
 
+  get formData() { return <FormArray>this.entryForm.get('images') };
+
+    // imageControl of entryForm.get('images').controls; let i = index"
 }

@@ -29,7 +29,8 @@ export class AuthService {
       .catch(
         error => console.log(error)
       );
-    this.loginUser(email, pass);
+    // this.loginUser(email, pass);
+    this.router.navigate(['login']);
   }
 
   loginUser(email:string, pass: string): any {

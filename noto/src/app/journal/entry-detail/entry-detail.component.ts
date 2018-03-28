@@ -35,7 +35,7 @@ export class EntryDetailComponent implements OnInit {
 
   onDeleteEntry() {
     this.journalService.deleteEntry(this.entry, this.id);
-    this.router.navigate(['../../'], {relativeTo: this.route});
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
 }

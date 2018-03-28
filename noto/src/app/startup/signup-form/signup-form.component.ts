@@ -38,6 +38,8 @@ export class SignupFormComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.signupUser(first, last, email, password);
+    // setTimeout(function() {this.authService.signupUser(first, last, email, password)}, 5000);
+    // this.authService.loginUser(email, password);
   }
 
 }
