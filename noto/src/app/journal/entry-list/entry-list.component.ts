@@ -37,7 +37,7 @@ export class EntryListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    // this.entries = null;
+    this.entries = null;
   }
 
   onKeyPress(value: string) {
